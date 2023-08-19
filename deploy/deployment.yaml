@@ -6,7 +6,7 @@ metadata:
     run: deploy01
   name: deploy01
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       run: deploy01
@@ -18,5 +18,5 @@ spec:
       containers:
       - image: sreeharshav/rollingupdate:v1
         name: deploy01
-      - image: sreeharshav/utils:latest
-        name: utils
+      # - image: sreeharshav/utils:latest
+      #   name: utils
