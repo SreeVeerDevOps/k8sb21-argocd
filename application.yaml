@@ -11,7 +11,7 @@ spec:
       allowEmpty: true
   project: default
   source:
-    repoURL: git@github.com:SreeVeerDevOps/k8sb20-argocd.git
+    repoURL: git@github.com:SreeVeerDevOps/k8sb21-argocd.git
     targetRevision: HEAD
     path: deploy
   destination:
@@ -32,11 +32,32 @@ spec:
       allowEmpty: true
   project: default
   source:
-    repoURL: git@github.com:SreeVeerDevOps/k8sb20-argocd.git
+    repoURL: git@github.com:SreeVeerDevOps/k8sb21-argocd.git
     targetRevision: HEAD
     path: votingapp
   destination:
     server: https://kubernetes.default.svc
     namespace: votingapp
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ArgoApps
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: true
+  project: default
+  source:
+    repoURL: git@github.com:SreeVeerDevOps/k8sb21-argocd.git
+    targetRevision: HEAD
+    path: ArgoApps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ingress-nginx
 
 #The above manifest can be deployed using echo '' | ku apply -f -
