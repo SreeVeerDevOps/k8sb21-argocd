@@ -11,7 +11,7 @@ spec:
     - "app1.k8sclass.xyz"
     secretName: nginx-tls
   rules:
-  - host: vote.k8sclass.xyz
+  - host: app1.k8sclass.xyz
     http:
       paths:
       - path: /
